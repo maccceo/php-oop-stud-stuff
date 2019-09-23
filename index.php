@@ -15,6 +15,7 @@ foreach ($persone as $persona) {
 }
 
 
+
 echo "<h2>Studenti</h2>";
 
 $studenti = [

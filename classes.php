@@ -1,9 +1,18 @@
 <?php 
 
+trait FullName {
+	public function getFullName() {
+		return $this -> name . ' ' . $this -> lastname; 
+	}
+}
+
+
 class Persona {
 	protected $name;
 	protected $lastname;
 	protected $address;
+
+	use FullName;
 
 	public function __construct($name,$lastname,$address) {
 		$this -> name = $name;
@@ -19,10 +28,11 @@ class Persona {
 }
 
 
-
 class Studente extends Persona {
 	protected $studies;
 	protected $taxes;
+
+	use FullName;
 
 	public function __construct($name,$lastname,$studies,$taxes) {
 		$this -> name = $name;
@@ -33,14 +43,12 @@ class Studente extends Persona {
 
 	public function toString() {
 		if ($this -> address) {
-			return 	"<strong>Nome:</strong> " . $this -> name .
-					"<br><strong>Cognome:</strong> " . $this -> lastname .
+			return 	"<strong>" . $this -> getFullName() . "</strong>" .
 					"<br><strong>Indirizzo:</strong> " . $this -> address .
 					"<br><strong>Programma di studi:</strong> " . $this -> studies .
 					"<br><strong>Tasse:</strong> " . $this -> taxes . "<br><br>";
 		} else {
-			return 	"<strong>Nome:</strong> " . $this -> name .
-					"<br><strong>Cognome:</strong> " . $this -> lastname .
+			return 	"<strong>" . $this -> getFullName() . "</strong>" .
 					"<br><strong>Programma di studi:</strong> " . $this -> studies .
 					"<br><strong>Tasse:</strong> " . $this -> taxes . "<br><br>";
 		}
@@ -56,10 +64,11 @@ class Studente extends Persona {
 }
 
 
-
 class Professore extends Persona {
 	protected $specialization;
 	protected $wage;
+
+	use FullName;
 
 	public function __construct($name,$lastname,$specialization,$wage) {
 		$this -> name = $name;
@@ -70,14 +79,12 @@ class Professore extends Persona {
 
 	public function toString() {
 		if ($this -> address) {
-			return 	"<strong>Nome:</strong> " . $this -> name .
-					"<br><strong>Cognome:</strong> " . $this -> lastname .
+			return 	"<strong>" . $this -> getFullName() . "</strong>" .
 					"<br><strong>Indirizzo:</strong> " . $this -> address .
 					"<br><strong>Specializzazione:</strong> " . $this -> specialization .
 					"<br><strong>Paga:</strong> " . $this -> wage . "<br><br>";
 		} else {
-			return 	"<strong>Nome:</strong> " . $this -> name .
-					"<br><strong>Cognome:</strong> " . $this -> lastname .
+			return 	"<strong>" . $this -> getFullName() . "</strong>" .
 					"<br><strong>Specializzazione:</strong> " . $this -> specialization .
 					"<br><strong>Paga:</strong> " . $this -> wage . "<br><br>";
 		}
