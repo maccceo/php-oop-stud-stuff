@@ -18,4 +18,41 @@ class Persona {
 	}
 }
 
+
+
+class Studente extends Persona {
+	protected $studies;
+	protected $taxes;
+
+	public function __construct($name,$lastname,$studies,$taxes) {
+		$this -> name = $name;
+		$this -> lastname = $lastname;
+		$this -> studies = $studies;
+		$this -> taxes = $taxes;
+	}
+
+	public function toString() {
+		if ($this -> address) {
+			return 	"<strong>Nome:</strong> " . $this -> name .
+					"<br><strong>Cognome:</strong> " . $this -> lastname .
+					"<br><strong>Indirizzo:</strong> " . $this -> address .
+					"<br><strong>Programma di studi:</strong> " . $this -> studies .
+					"<br><strong>Tasse:</strong> " . $this -> taxes . "<br><br>";
+		} else {
+			return 	"<strong>Nome:</strong> " . $this -> name .
+					"<br><strong>Cognome:</strong> " . $this -> lastname .
+					"<br><strong>Programma di studi:</strong> " . $this -> studies .
+					"<br><strong>Tasse:</strong> " . $this -> taxes . "<br><br>";
+		}
+	}
+
+	public function setAddress($address) {
+		$this -> address = $address;
+	}
+
+	public function getAddress() {
+		return $this -> address;
+	}
+}
+
 ?>
